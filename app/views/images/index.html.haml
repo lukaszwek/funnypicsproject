@@ -5,6 +5,7 @@
     %tr
       %th User
       %th Title
+      %th Image
       %th
       %th
       %th
@@ -14,6 +15,7 @@
       %tr
         %td= image.user.nick
         %td= image.title
+        %td= image_tag image.image(:medium)
         %td= link_to 'Show', image
         %td= link_to 'Edit', edit_image_path(image)
         %td= link_to 'Destroy', image, :method => :delete, :data => { :confirm => 'Are you sure?' }
