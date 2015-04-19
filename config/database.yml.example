@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: funny_pics_development
+
+test:
+  <<: *default
+  database: funny_pics_test
+
+production:
+  <<: *default
+  database: funny_pics_production
+  username: funny_pics
+  password: <%= ENV['FUNNY_PICS_DATABASE_PASSWORD'] %>
