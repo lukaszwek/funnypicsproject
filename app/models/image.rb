@@ -5,4 +5,7 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   validates :user, :title, :image, presence: :true
+
+  scope :published, -> { where(published: true) }
+  scope :unpublished, -> { where(published: false) }
 end

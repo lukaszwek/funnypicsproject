@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :roles, through: :user_roles
   has_many :images
 
-  before_validation :assign_role
+  after_create :assign_role
 
   def has_role?(role)
     !roles.where(role_type: role).empty?
@@ -17,10 +17,10 @@ class User < ActiveRecord::Base
   private
 
   def assign_role
-    if @role.present?
-      role = Role.find_by(role_type: @role)
+    role = if @role.present?
+      Role.find_by(role_type: @role)
     else
-      role = 'user'
+      Role.find_by(role_type: 'user')
     end
     UserRole.create!(role: role, user_id: id)
   end

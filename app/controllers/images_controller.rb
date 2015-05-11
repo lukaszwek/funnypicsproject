@@ -5,7 +5,7 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    @images = Image.published.all
   end
 
   # GET /images/1
@@ -25,7 +25,7 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-    @image = Image.new(image_params.merge!(user: current_user))
+    @image = Image.new(image_params.merge!({user: current_user, published: false}))
 
     respond_to do |format|
       if @image.save
