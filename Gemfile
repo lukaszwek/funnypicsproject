@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "haml-rails", "~> 0.9"
 gem "paperclip", "~> 4.2"
 gem 'devise'
+gem "rails-erd"
 
 group :development, :test do
   gem 'byebug'
