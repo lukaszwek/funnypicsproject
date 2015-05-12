@@ -6,7 +6,9 @@ module Moderator
     protected
 
     def check_if_moderator
-      current_user.has_role?('moderator')
+      unless current_user.has_role?('moderator') || current_user.has_role?('admin')
+        redirect_to root_path, alet: 'Forbiden'
+      end
     end
   end
 end

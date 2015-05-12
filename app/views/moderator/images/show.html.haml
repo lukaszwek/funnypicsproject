@@ -1,0 +1,12 @@
+%p
+  %b User:
+  = @image.user.nick
+%p
+  %b Title:
+  = @image.title
+%p
+  = image_tag @image.image.url
+%p
+  =link_to 'Accept', accept_moderator_image(@image), method: :post
+  =link_to 'Delete', moderator_image(@image), method: :delete
+  =link_to 'Index', moderator_images
