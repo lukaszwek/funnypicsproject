@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
     banned
   end
 
+  def active_for_authentication?
+      super && !self.banned
+  end
+
   private
 
   def assign_role
