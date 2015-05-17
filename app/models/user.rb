@@ -10,8 +10,15 @@ class User < ActiveRecord::Base
 
   after_create :assign_role
 
+  scope :banned, -> { where(banned: true) }
+  scope :unbanned, -> { where(banned: false) }
+
   def has_role?(role)
     !roles.where(role_type: role).empty?
+  end
+
+  def banned?
+    banned
   end
 
   private
