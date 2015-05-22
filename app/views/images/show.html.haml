@@ -1,14 +1,5 @@
-%p#notice= notice
-
-%p
-  %b User:
-  = @image.user.nick
-%p
-  %b Title:
-  = @image.title
-%p
-  = image_tag @image.image.url
-
 = link_to 'Edit', edit_image_path(@image)
 \|
 = link_to 'Back', images_path
+
+= image_tag @image.image.url

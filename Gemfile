@@ -12,6 +12,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "haml-rails", "~> 0.9"
 gem "paperclip", "~> 4.2"
 gem 'devise'
+gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate-bootstrap'
 gem "rails-erd"
 
 group :development, :test do

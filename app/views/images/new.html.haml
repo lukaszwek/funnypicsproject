@@ -1,5 +1,8 @@
-%h1 New image
-
-= render 'form'
-
-= link_to 'Back', images_path
+.container{:style => "margin-top:30px"}
+  .col-md-12
+    .modal-dialog{:style => "margin-bottom:0"}
+      .modal-content
+        .panel-heading
+          %h3.panel-title Upload image
+        = render 'form'
+        

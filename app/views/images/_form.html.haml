@@ -1,16 +1,18 @@
 = form_for @image, html: { multipart: true } do |f|
-  - if @image.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@image.errors.count, "error")} prohibited this image from being saved:"
-      %ul
-        - @image.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :image
-    = f.file_field :image
-  .actions
-    = f.submit 'Save'
+  .panel-body
+    %form{:role => "form"}
+      - if @image.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@image.errors.count, "error")} prohibited this image from being saved:"
+          %ul
+            - @image.errors.full_messages.each do |msg|
+              %li= msg
+      %fieldset
+        .form-group
+          = f.label :title
+          = f.text_field :title
+        .form-group
+          = f.label :image
+          = f.file_field :image
+        = link_to 'Back', root_path, class: 'btn btn-sm btn-danger'
+        = f.submit "Save", class: 'btn btn-sm btn-success'

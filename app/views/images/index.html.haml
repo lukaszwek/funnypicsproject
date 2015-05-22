@@ -1,25 +1,59 @@
-%h1 Listing images
-
-%table
-  %thead
-    %tr
-      %th User
-      %th Title
-      %th Image
-      %th
-      %th
-      %th
-
-  %tbody
-    - @images.each do |image|
-      %tr
-        %td= image.user.nick
-        %td= image.title
-        %td= image_tag image.image(:medium)
-        %td= link_to 'Show', image
-        %td= link_to 'Edit', edit_image_path(image)
-        %td= link_to 'Destroy', image, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Image', new_image_path
+/ Navigation
+%nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+  .container
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      .navbar-brand=link_to 'FunnyPics',root_path
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          = link_to 'Upload image', new_image_path
+        - if current_user
+          %li
+            = link_to 'Log out', destroy_user_session_path, method: :delete
+    / /.navbar-collapse
+  / /.container
+/ Page Content
+.container
+  / Page Heading
+  .row
+    .col-lg-12
+      %h1.page-header
+        Enjoy FunnyPics!
+        %small
+          = "(#{@images.count} published)"
+  / /.row
+  - @images.each do |image|
+    / Project One
+    .row
+      .col-md-12
+        %center
+          =link_to path_to_image(image.image), class: 'alpha-hover-photo' do
+            = image_tag image.image, height: '300', title: "#{image.title} (#{image.user.nick})"
+        / .btn.btn-success= link_to 'Show', image
+        / %br/
+        / .btn.btn-primary= link_to 'Edit', edit_image_path(image)
+        / %br/
+        / .btn.btn-danger= link_to 'Destroy', image, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    / /.row
+    %hr/
+  / Pagination
+  - if @images.total_pages > 1
+    .row.text-center
+      .col-lg-12
+        %ul.pagination
+          = will_paginate @images, renderer: BootstrapPagination::Rails
+  / /.row
+  %hr/
+  / Footer
+  %footer
+    .row
+      .col-lg-12
+        %p Copyright © FunnyPics 2015
+    / /.row
