@@ -12,6 +12,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "haml-rails", "~> 0.9"
 gem "paperclip", "~> 4.2"
 gem 'devise'
+#deployment
+gem 'dotenv-rails'
+gem 'capistrano', '~> 3.3.0'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-bundler', '~> 1.1.3'
+gem 'capistrano-rvm'
+gem 'capistrano-passenger'
+
 
 group :development, :test do
   gem 'byebug'
