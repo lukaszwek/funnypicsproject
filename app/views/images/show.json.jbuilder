@@ -5,14 +5,14 @@ json.author do
 end
 json.versions do
   json.original do
-    json.url @image.image.url
+    json.url full_image_url(@image.image.url)
   end
 
   json.medium do
-    json.url @image.image.url(:medium)
+    json.url full_image_url(@image.image.url(:medium))
   end
 
   json.thumb do
-    json.url @image.image.url(:thumb)
+    json.url full_image_url(@image.image.url(:thumb))
   end
 end
