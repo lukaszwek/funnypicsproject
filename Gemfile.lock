@@ -223,6 +223,9 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     sexp_processor (4.5.0)
+    shelly-dependencies (0.2.5)
+      rake
+      thin
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
     simplecov (0.10.0)
@@ -295,6 +298,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  shelly-dependencies
   shoulda-matchers
   simplecov
   simplecov-rcov
