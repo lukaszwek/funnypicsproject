@@ -8,4 +8,8 @@ class Image < ActiveRecord::Base
 
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
+
+  def image_base64(version)
+    Base64.encode64(File.open(image.path(version)).read)
+  end
 end
