@@ -4,15 +4,9 @@ json.author do
   json.email @image.user.email
 end
 json.versions do
-  json.original do
-    json.url @image.image.url
-  end
+  json.original @image.image_base64(:original)
 
-  json.medium do
-    json.url @image.image.url(:medium)
-  end
+  json.medium @image.image_base64(:medium)
 
-  json.thumb do
-    json.url @image.image.url(:thumb)
-  end
+  json.thumb @image.image_base64(:thumb)
 end

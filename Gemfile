@@ -16,6 +16,16 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap'
 gem "rails-erd"
 
+#deployment
+gem 'dotenv-rails'
+gem 'capistrano', '~> 3.3.0'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-bundler', '~> 1.1.3'
+gem 'capistrano-rvm'
+gem 'capistrano-passenger'
+
+gem 'shelly-dependencies'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
