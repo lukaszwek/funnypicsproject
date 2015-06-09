@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'images#index'
 
+  devise_scope :user do
+    get '/login', to: 'devise/sessions#new'
+  end
+
   resources :images
   devise_for :users
   namespace :moderator do

@@ -7,6 +7,7 @@
 %p
   = image_tag @image.image.url
 %p
-  =link_to 'Accept', accept_moderator_image(@image), method: :post
-  =link_to 'Delete', moderator_image(@image), method: :delete
-  =link_to 'Index', moderator_images
+  - unless @image.published?
+    =link_to 'Accept', accept_moderator_image_path(@image), method: :patch
+    =link_to 'Delete', moderator_image_path(@image), method: :delete
+    =link_to 'ALL', moderator_images_path

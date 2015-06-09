@@ -2,7 +2,7 @@ module Moderator
   class ImagesController < BaseController
     before_action :find_image, only: [:show, :accept, :destroy]
     def index
-      @images = Image.unpublished.all
+      @images = Image.all
     end
 
     def show ; end

@@ -1,23 +1,16 @@
-%h1 Listing images
-
-%table
-  %thead
+.col-md-12
+  %table.table
     %tr
       %th User
       %th Title
       %th Image
-      %th
-      %th
-      %th
-
-  %tbody
+      %th Options
     - @images.each do |image|
-      %tr
+      %tr{:class => image.published? ? 'success' : 'danger'}
         %td= image.user.nick
         %td= image.title
         %td= image_tag image.image(:medium)
-        %td= link_to 'Show', moderator_image_path(image)
-        %td= button_to 'Accept', accept_moderator_image_path(image), :method => :patch
-        %td= link_to 'Destroy', moderator_image_path(image), :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-
+        %td
+          - unless image.published?
+            = button_to 'Accept', accept_moderator_image_path(image), :method => :patch, class: 'btn btn-success btn-xs'
+          = link_to 'Destroy', moderator_image_path(image), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-xs'
